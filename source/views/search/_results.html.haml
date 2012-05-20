@@ -1,0 +1,10 @@
+/ search results
+{block:SearchPage}
+%section{ :id=>"search-results" }
+  {block:SearchResults}
+  {lang:SearchResultCount results for SearchQuery 2}
+  {/block:SearchResults}
+  {block:NoSearchResults}
+  {lang:No search results for SearchQuery 2}
+  {/block:NoSearchResults}
+{/block:SearchPage}

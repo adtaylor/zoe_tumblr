@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/WebPage"> <!-- <![endif]-->
+<head>
+  <meta charset='utf-8' />
+  <meta content='IE=edge,chrome=1' http_equiv='X-UA-Compatible' />
+  <meta content='Ad Taylor (adtaylor.co.uk)' name='author' />
+  <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+  {block:Description}
+  <meta content='{MetaDescription}' name='description' />
+  {/block:Description}
+  <!-- -- variable meta data -->
+  <meta content='' name='text:Flickr Username' />
+  <meta content='#fff' name='color:Background' />
+  <meta content='Arial' name='font:Title' />
+  <meta content='Courier' name='font:Body' />
+  <meta content='Lucida Sans' name='font:Accent' />
+  <meta content='1' name='if:Show People I Follow' />
+  <meta content='1' name='if:Show Tags' />
+  <meta content='1' name='if:Show Album Art on Audio Posts' />
+  <meta content='0' name='if:Enable Jump Pagination' />
+  <meta content='' name='text:Disqus Shortname' />
+  <meta content='' name='image:Header' />
+  <meta content='' name='image:Background' />
+  <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+  <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+  <link href='{Favicon}' rel='shortcut icon' />
+  <link href='{PortraitURL-128}' rel='apple-touch-icon' />
+  <link href='{RSS}' rel='alternate' type='application/rss+xml' />
+  <link href="/stylesheets/site.css?1337506326" media="screen" rel="stylesheet" type="text/css" />
+  <!-- variable styles -->
+  <style type='text/css'>
+    /*<![CDATA[*/
+        body {
+            background: {color:Background} url('{image:Background}');
+            font-family: {font:Body};
+        }
+    /*]]>*/
+  </style>
+  <style type='text/css'>
+    /*<![CDATA[*/
+      {CustomCSS}
+    /*]]>*/
+  </style>
+  <script src='http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js'></script>
+</head>
+<body>
+  <header>
+    {block:IfHeaderImage}
+    <img id='header-img' src='{image:Header}' />
+    {/block:IfHeaderImage}
+    {block:IfNotHeaderImage}
+    <div id='title'>{Title}</div>
+    {/block:IfNotHeaderImage}
+    <div id='description'>{Description}</div>
+  </header>
+  <section id='main'>
+    <h1>The Middleman is watching</h1>
+  </section>
+  <footer>
+    &copy; {CopyrightYears} Zoë Ann Baker.
+  </footer>
+  <!-- load scripts last -->
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  <script src="/javascripts/scripts.js?1337506326" type="text/javascript"></script>
+  <script type='text/javascript'>
+    //<![CDATA[
+var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];(function(a,b){var c=a.createElement(b),d=a.getElementsByTagName(b)[0];c.async=!0,c.src=("https:"==location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js",d.parentNode.insertBefore(c,d)})(document,"script");
+//]]>
+  </script>
+</body>
+</html>

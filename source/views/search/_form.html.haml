@@ -1,0 +1,11 @@
+%section#search
+  %form{ :action=>"/search", :method=>"get", :id=>"search-form", :role=>"search" }
+    %input{ :type=>"hidden", :name=>"t", :value=>"{Name}" }
+    %input{ :type=>"hidden", :name=>"scope", :value=>"all_of_tumblr" }
+    %input{ :type=>"text", :name=>"q", :class=>"query", :value=>"{SearchQuery}" }
+    %input{ :type=>"submit", :value=>"Search", :class=>"submit" }
+  #search-scope
+    %input{ :type=>"radio", :id=>"search-scope-me", :name=>"scope", :checked=>"checked" }
+    %label{ :for=>"search-scope-me"} {lang:My blog}
+    %input{ :type=>"radio", :id=>"search-scope-all", :name=>"scope" }
+    %label{ :for=>"search-scope-all"} {lang:All of Tumblr}

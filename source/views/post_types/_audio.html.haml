@@ -1,0 +1,24 @@
+{block:Audio}
+%article.post.audio
+
+  {block:IfShowAlbumArtOnAudioPosts}
+  {block:AlbumArt}
+  .album_art
+    %img{ :src=>"{AlbumArtURL}", :alt=>"{block:Artist}{Artist}{/block:Artist}{block:TrackName} - {TrackName}{/block:TrackName}"}
+  {/block:AlbumArt}
+  {/block:IfShowAlbumArtOnAudioPosts}
+      
+  .player
+    {AudioPlayerWhite}
+    .meta
+      {PlayCountWithLabel}
+      {block:ExternalAudio}
+      %span{ :class=>"download_external_audio" }
+        &bull; 
+        %a{ :href=>"{ExternalAudioURL}" } {lang:Download}
+      {/block:ExternalAudio}
+
+      {block:Caption}
+      .caption {Caption}
+      {/block:Caption}
+{/block:Audio}

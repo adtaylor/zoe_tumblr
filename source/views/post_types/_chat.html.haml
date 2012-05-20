@@ -1,0 +1,14 @@
+{block:Chat}
+%article.post.chat
+  {block:Title}
+  .title {Title}
+  {/block:Title}
+  .lines
+    {block:Lines}
+    %div{ :class=>"line {Alt}"}
+      {block:Label}
+      %strong {Label}
+      {/block:Label}
+      {Line}
+    {/block:Lines}
+{/block:Chat}

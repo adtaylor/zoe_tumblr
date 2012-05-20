@@ -1,0 +1,93 @@
+!!!5
+/[if lt IE 7] <html class="no-js ie6 oldie" lang="en">
+/[if IE 7]    <html class="no-js ie7 oldie" lang="en">
+/[if IE 8]    <html class="no-js ie8 oldie" lang="en">
+/[if gt IE 8] <!--> <html class="no-js" lang="en" itemscope itemtype="http://schema.org/WebPage"> <!--
+%head
+  %meta{ :charset=>"utf-8"}
+  %meta{ :http_equiv=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}
+  %meta{ :name=>"author", :content=>"Ad Taylor (adtaylor.co.uk)"}
+  %meta{ :name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
+
+  {block:Description}
+  %meta{ :name=>"description", :content=>"{MetaDescription}"}
+  {/block:Description}
+
+  / -- variable meta data
+  %meta{ :name=>"text:Flickr Username", :content=>""}
+  %meta{ :name=>"color:Background", :content=>"#fff" }
+  %meta{ :name=>"font:Title", :content=>"Arial" }
+  %meta{ :name=>"font:Body", :content=>"Courier" }
+  %meta{ :name=>"font:Accent", :content=>"Lucida Sans" }
+  %meta{ :name=>"if:Show People I Follow", :content=>"1" }
+  %meta{ :name=>"if:Show Tags", :content=>"1" }
+  %meta{ :name=>"if:Show Album Art on Audio Posts", :content=>"1" }
+  %meta{ :name=>"if:Enable Jump Pagination", :content=>"0" }
+  %meta{ :name=>"text:Disqus Shortname", :content=>"" }
+  %meta{ :name=>"image:Header", :content=>"" }
+  %meta{ :name=>"image:Background", :content=>"" }
+
+  %title {Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}
+  
+  / Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references
+  %link{ :rel=>"shortcut icon", :href=>"{Favicon}"}
+  %link{ :rel=>"apple-touch-icon", :href=>"{PortraitURL-128}"}
+  %link{ :rel=>"alternate", :type=>"application/rss+xml", :href=>"{RSS}"}
+ 
+  / Load fonts 
+  %link{ :href=>'http://fonts.googleapis.com/css?family=Glegoo', :rel=>'stylesheet', :type=>'text/css'}
+
+  = stylesheet_link_tag "site"
+
+  / variable styles
+  :css
+      body {
+          background: {color:Background} url('{image:Background}');
+          font-family: {font:Body};
+      }
+
+  :css
+    {CustomCSS}
+
+  %script{ :src=>"http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js" }
+
+%body
+
+  %header
+    {block:IfHeaderImage}
+    %img{ :src=>"{image:Header}", :id=>"header-img" }
+    {/block:IfHeaderImage}
+    {block:IfNotHeaderImage}
+    #title {Title}
+    {/block:IfNotHeaderImage}
+
+    %div{ :id=>"description"} {Description}
+
+  %section#main
+    = yield
+
+
+
+  %footer
+    &copy; {CopyrightYears} Zoë Ann Baker.
+
+
+
+  / load scripts last
+  %script{ :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
+  = javascript_include_tag  "scripts"
+  
+  
+
+  
+  :javascript
+    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+    (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+
+</html>
