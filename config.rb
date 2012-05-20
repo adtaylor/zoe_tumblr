@@ -4,7 +4,7 @@ require 'middleman/features/tumblargh'
 
 activate :tumblargh
 #
-set_tumblr_api_key '1mHiDEbvVp6tXociEXMVZYx16UZKFhmbo0w1aILRMDrCVwt1mx' # This is your OAuth consumer key
+set_tumblr_api_key 'x1mHiDEbvVp6tXociEXMVZYx16UZKFhmbo0w1aILRMDrCVwt1mx' # This is your OAuth consumer key
 # set_tumblr_blog 'zoewithdots.tumblr.com'
 set_tumblr_blog 'theforestfeast.com'
 ### 
