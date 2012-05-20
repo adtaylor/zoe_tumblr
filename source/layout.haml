@@ -42,8 +42,8 @@
   / variable styles
   :css
       body {
-          background: {color:Background} url('{image:Background}');
-          font-family: {font:Body};
+          /*background: {color:Background} url('{image:Background}');*/
+          /*font-family: {font:Body};*/
       }
 
   :css
@@ -53,15 +53,8 @@
 
 %body
 
-  %header
-    {block:IfHeaderImage}
-    %img{ :src=>"{image:Header}", :id=>"header-img" }
-    {/block:IfHeaderImage}
-    {block:IfNotHeaderImage}
-    #title {Title}
-    {/block:IfNotHeaderImage}
-
-    %div{ :id=>"description"} {Description}
+  %header.masthead
+    %h1 {Title}
 
   %section#main
     = yield

@@ -6,13 +6,23 @@
 / the meat and potatoes
 %section#posts
 {block:Posts}
-= render "views/post_types/_photo"
-= render "views/post_types/_photoset"
-= render "views/post_types/_video"
-= render "views/post_types/_audio"
-= render "views/post_types/_text"
-= render "views/post_types/_quote"
-= render "views/post_types/_link"
-= render "views/post_types/_chat"
-= render "views/post_types/_answer"
+%ol.posts
+  %li
+    = render "views/post_types/_photo"
+  %li
+    = render "views/post_types/_photoset"
+  %li
+    = render "views/post_types/_video"
+  %li
+    = render "views/post_types/_audio"
+  %li
+    = render "views/post_types/_text"
+  %li
+    = render "views/post_types/_quote"
+  %li
+    = render "views/post_types/_link"
+  %li
+    = render "views/post_types/_chat"
+  %li
+    = render "views/post_types/_answer"
 {/block:Posts}
