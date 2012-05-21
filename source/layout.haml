@@ -53,8 +53,9 @@
 
 %body
 
-  %header.masthead
-    %h1 {Title}
+  / Header
+  = render "views/header/_header"
+
 
   %section#main
     = yield

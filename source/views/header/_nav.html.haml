@@ -1,0 +1,5 @@
+%nav.nav
+  %ul
+    - (1...6).each do |item|
+      %li
+        %a{:href=>"#hello"}= "hello #{item}"
