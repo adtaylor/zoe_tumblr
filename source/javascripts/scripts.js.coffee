@@ -3,14 +3,5 @@ zoe =
   tumblr_blog : 'zoewithdots'
 
 $ ->
-  m = $('.posts')
-  m.imagesLoaded ->
-    m.masonry
-      itemSelector: '.item'
-      isAnimated: false
-      isFitWidth: true
-      columnWidth: (containerWidth)->
-        containerWidth / 16
-  $('.item').click ->
-    m.addClass('active').children('.item').first().addClass('item-active')
-    m.masonry('resize')
+  $('ul').on 'click', ->
+    $(@).toggleClass 'mob-nav-hide'

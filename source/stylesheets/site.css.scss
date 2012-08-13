@@ -14,7 +14,7 @@
  */
 
 @import "compass";
-@import "global/*.png";
+// @import "global/*.png";
 
 
 
@@ -27,20 +27,19 @@ $link-active-color:  false;
 $link-visited-color: false;
 
 $font-color:  #2a2a2a;
-$font-family: "Courier New",Courier,monospace;
+$font-family: Helvetica, Arial, sans-serif;
 $base-font-size:   12px;
 $base-line-height: 15px;
 
 $gutter: 2em;
 
-$pale-green: rgb(156,206,202);
 
 @include global-reset;
 @include establish-baseline();
 
-$grid-background-baseline-color : rgba(200, 100, 0, 0.1);
+$grid-background-baseline-color : #E0F0FF;
 body {
- // @include debug-vertical-alignment();
+ @include debug-vertical-alignment();
 }
 
 $black:       #000;
@@ -53,11 +52,27 @@ body {
   font-family: $font-family;
   color: $font-color; 
 }
+
+@font-face {
+    font-family: 'homemade_apple';
+    src: url('http://static.tumblr.com/d2erwgc/FB7m8pqob/homemadeapple-webfont.eot');
+    src: url('http://static.tumblr.com/d2erwgc/FB7m8pqob/homemadeapple-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://static.tumblr.com/d2erwgc/bx2m8pqrl/homemadeapple-webfont.woff') format('woff'),
+         url('http://static.tumblr.com/d2erwgc/Noxm8pqsd/homemadeapple-webfont.ttf') format('truetype'),
+         url('http://static.tumblr.com/d2erwgc/tUjm8pqt6/homemadeapple-webfont.svg#homemade_appleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 /* 3. Headings
   ==================== */
-  header {
-    font-family: 'Glegoo', serif;
-  }
+
+header h1 {
+  font-family: 'homemade_apple', cursive;
+}
+
+
 /* 4. Links
   ==================== */
 $link-color:              $black;
@@ -99,7 +114,10 @@ ul, ol {
 }
 
 .semantic-list {
-  list-style: none;
+  margin: 0;
+  li {
+    list-style: none;
+  }
 }
 
 .inline-list {
@@ -120,175 +138,110 @@ nav {
 /* 6. Layout
   ==================== */
 
-  body {
-    margin:0 auto;
-    width:94%;
-    max-width:700px;
-    min-width:200px;
-    
+body {
+  padding: rhythm();
+
+  @media (min-width:600px) {
+    & {
+      padding: 0;
+    }
+  }
+}
+
+/* role="banner" */
+[role="banner"] {
+  .masthead {
+    color: pink;
   }
 
 
-// THE REAL LAYOUT
+  @media (min-width:600px) {
+    & {
+      text-align: center;
 
-.masthead {
-  @extend .region;
-  @extend .size1of1;
+    }
+  }
+
 }
 
+
+/* Navigation */
+.nav ul {
+
+  @media (max-width:600px) {
+    &:before {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      overflow: hidden;
+cursor: pointer;
+
+      border: 1px solid black;
+      border-radius: 4px;
+      
+      background-color: white;
+      box-shadow: 1px 1px 0 white;
+
+      text-align: center;
+      text-shadow: 1px 1px 0 white;
+      content: '=';
+      font-size: 20px;
+      line-height: 1;
+    }
+    &.mob-nav-hide li {
+      display: none;
+    }
+  }
+}
+
+
+@media (min-width:600px) {
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 960px) {
+
+}
 
 
 
 /* 7. Modules
   ==================== */
 
-.masthead {
-
-  h1 {
-    @include global-sprite(zoe_header);
-    @extend .ir;
-    height: global-sprite-height(zoe_header);
-    width: global-sprite-width(zoe_header);
-    margin: $base-line-height*4 auto $base-line-height*3;
-  }
-
+[role="banner"] {
+  
 }
 
-.nav {
-  margin-bottom: $base-line-height*2;
-  text-align: center;
-
-  li {
-    margin: $base-line-height/2 $gutter $base-line-height/4;
-  }
-
-  &:before, &:after {
-    display: block;
-    width: 100%;
-    content: '';
-  }
-
-  &:before {
-    @include global-sprite(nav-top, $offset-x: 50%);
-    height: global-sprite-height(nav-top);
-  }
-
-  &:after {
-    @include global-sprite(nav-bottom, $offset-x: 50%);
-    height: global-sprite-height(nav-bottom);
-  }
-}
-
-// Posts container
-// =================
-// 
 .posts {
-  display:block;
-  clear:both;
-  margin-left:0;
-  list-style:none;
+  $post-list: 1px solid #888;
 
-  &:after {
-    display:block;
-    clear:both;
-    content:'';
+  & > li {
+    padding: rhythm();
+    border-bottom: $post-list;
   }
 
-  .item {
-    display:block;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-    // clear:both;
-//    padding: 0 0 $base-line-height*2 $gutter*3;
-    margin: 0;
-    background:none;
-    width: 16.666em;
-    font-size: 12px;
-  }
-
-  &.active .item {
-    font-size: 2px;
-    line-height: 1.2;
-
-    &.item-active {
-      width: 41.666em;
-      font-size: 12px;
+  @media (min-width:600px) {
+    & {
+      border-top: none;
     }
   }
 
-  figure {
-    img {
-      max-width: 100%;
-    }
-
-    a {
-      display: block;
-    }
-  }
-
-  p a {
-    background-color: yellow;
-
-    &:hover, &:focus { 
-      background-color: transparent;
-    }
+  img {
+    display: block;
+    max-width: 100%;
   }
 }
 
-/*
-@media (min-width:320px) {
-  .posts > li {
-    clear:none;
-
-    .posts-start {
-      clear:left;
-    }
-    
-    .posts-end {
-      zoom:1;
-      float:none;
-      width:auto;
-    }
-
-  }
-}
-
-@media (min-width:480px) {
-
-  .posts > li {
-    float:left;
-    width:50%;
-  }
-
-  .posts > li:nth-child(2n+1) {
-    clear:left;
-  }
-
-  .posts img {
-    width:auto;
-  }
-
-}
 
 
-@media (min-width:600px) {
 
-  .posts > li {
-    width:33.333333%;
-  }
 
-  .posts > li:nth-child(2n+1) {
-    clear:none;
-  }
 
-  .posts > li:nth-child(3n+1) {
-    clear:left;
-  }
-
-}
-
-*/
 
 
 
@@ -299,33 +252,4 @@ nav {
     font: 0/0 a;
     text-shadow: none;
     color: transparent;
-}
-
-
-
-/* TEMP */
-
-.masonry,
-.masonry .masonry-brick {
-  -webkit-transition-duration: 0.7s;
-     -moz-transition-duration: 0.7s;
-      -ms-transition-duration: 0.7s;
-       -o-transition-duration: 0.7s;
-          transition-duration: 0.7s;
-}
-
-.masonry {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
-}
-
-.masonry .masonry-brick {
-  -webkit-transition-property: left, right, top;
-     -moz-transition-property: left, right, top;
-      -ms-transition-property: left, right, top;
-       -o-transition-property: left, right, top;
-          transition-property: left, right, top;
 }
