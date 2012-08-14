@@ -32,14 +32,14 @@ $base-font-size:   12px;
 $base-line-height: 15px;
 
 $gutter: 2em;
-
+$sidebar-height-d: 200px;
 
 @include global-reset;
 @include establish-baseline();
 
 $grid-background-baseline-color : #E0F0FF;
 body {
- @include debug-vertical-alignment();
+ // @include debug-vertical-alignment();
 }
 
 $black:       #000;
@@ -96,7 +96,7 @@ $nav-link-hover-color:    $grey;
 $nav-link-focus-color:    $grey;
 $nav-link-active-color:   $grey;
 $nav-link-visited-color:  $grey;
-.nav a {
+.nav ul a {
   @include link-colors($nav-link-color, $nav-link-hover-color, $nav-link-focus-color, $nav-link-active-color, $nav-link-visited-color);
 }
 
@@ -148,54 +148,73 @@ body {
   }
 }
 
-/* role="banner" */
+
+
+/* Masthead */
 [role="banner"] {
+  position: relative;
+
   .masthead {
+    padding: rhythm();
     color: pink;
   }
 
+  .nav {
+    padding: rhythm();
+  }
+
+  .nav-control {
+    position: absolute;
+    top: rhythm();
+    right: rhythm();
+    padding: 4px;
+    background-color: #444;
+    color: #fff;
+  }
+
+  .mob-nav-hide {
+    display: none;
+  }
 
   @media (min-width:600px) {
-    & {
-      text-align: center;
+    text-align: center;
 
-    }
-  }
-
-}
-
-
-/* Navigation */
-.nav ul {
-
-  @media (max-width:600px) {
-    &:before {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 20px;
-      height: 20px;
-      overflow: hidden;
-cursor: pointer;
-
-      border: 1px solid black;
-      border-radius: 4px;
-      
-      background-color: white;
-      box-shadow: 1px 1px 0 white;
-
-      text-align: center;
-      text-shadow: 1px 1px 0 white;
-      content: '=';
-      font-size: 20px;
-      line-height: 1;
-    }
-    &.mob-nav-hide li {
+    .nav-control {
       display: none;
     }
+
+    .mob-nav-hide {
+      display: block;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $sidebar-height-d;
+    text-align: left;
+
+    .nav {
+      li {
+        display: block;
+      }
+    }
+  }
+
+}
+
+
+/* Main Section */
+#main {
+  @media only screen and (min-width: 768px) {
+    margin-left: $sidebar-height-d;
   }
 }
 
+/* Navigation */
 
 @media (min-width:600px) {
 }
@@ -231,6 +250,7 @@ cursor: pointer;
     }
   }
 
+  
   img {
     display: block;
     max-width: 100%;

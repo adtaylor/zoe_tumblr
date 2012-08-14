@@ -1,1 +1,1 @@
-(function(){typeof console!="undefined"&&console!==null&&console.log("Scripts loaded")}).call(this);
+(function(){var a;a={tumblr_api_key:"1mHiDEbvVp6tXociEXMVZYx16UZKFhmbo0w1aILRMDrCVwt1mx",tumblr_blog:"zoewithdots"},$(function(){return $("ul").on("click",function(){return $(this).toggleClass("mob-nav-hide")})})}).call(this);
