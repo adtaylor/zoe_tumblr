@@ -35,9 +35,12 @@
   %link{ :rel=>"alternate", :type=>"application/rss+xml", :href=>"{RSS}"}
  
   / Load fonts 
-  %link{ :href=>'http://fonts.googleapis.com/css?family=Glegoo', :rel=>'stylesheet', :type=>'text/css'}
+  = javascript_include_tag "//use.typekit.net/akl5ner.js"
+  :javascript
+      try{Typekit.load();}catch(e){}
 
-  = stylesheet_link_tag "site"
+
+  = stylesheet_link_tag "application"
 
   / variable styles
   :css
@@ -62,15 +65,18 @@
 
 
 
-  %footer
-    &copy; {CopyrightYears} Zoë Ann Baker.
+    %footer
+      &copy; {CopyrightYears} Zoë Ann Baker.
+      / Search forms
+      = render "views/search/_form"
+      = render "views/search/_results"
 
 
 
   / load scripts last
   %script{ :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
   = javascript_include_tag  "scripts"
-  
+ 
   
 
   
