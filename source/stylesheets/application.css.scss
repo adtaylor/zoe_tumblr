@@ -646,10 +646,22 @@ table {
    ========================================================================== */
 
 [role="banner"] {
+  padding: 1.5em;
+  text-align: center;
 
-  /*
-   * Responsive utility classes
-   */
+  @media (min-width: $break-wide) {
+    text-align: left;
+  }
+
+  .nav-control {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    background-color: $secondary-color;
+    color: #fff;
+  }
+
   .mob-nav-hide {
     display: none;
 
@@ -662,6 +674,7 @@ table {
     .nav-control {
       display: none;
     }
+
     .desk-nav-hide {
       display: none;
     }
@@ -679,12 +692,19 @@ table {
    */
 
   .nav {
+    li {
+      display: inline-block;
+      *display: inline;
+    }
 
     @media (min-width: $break-small) {
       // big stuff
     }
 
-    @media (min-width: $break-medium) {
+    @media (min-width: $break-wide) {
+      li {
+        display: block;
+      }
       // big stuff
     }
   }
@@ -744,11 +764,13 @@ table {
   li {
    display: inline-block;
    *display: inline;
+   margin-bottom: 0.5em;
   }
   
   a {
     position: relative;
     padding: 0.5em 0.5em 0.5em 2em;
+    display: block;
     @include border-radius(3px);
     background-color: $cover-color;
 
@@ -763,5 +785,11 @@ table {
       background-color: $bg-color;
       color: $bg-color;
     }
+
+    &:hover:before {
+      background-color: $light-text-color;
+      color: $light-text-color;
+    }
+
   }
 }
