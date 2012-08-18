@@ -1,27 +1,33 @@
-/ Search forms
-= render "views/search/_form"
-= render "views/search/_results"
-
 / the meat and potatoes
-%section#posts
+!= "<ol class=\"semantic-list post {block:IndexPage} posts{/block:IndexPage}\">"
 {block:Posts}
-%ol.posts
-  %li
-    = render "views/post_types/_photo"
-  %li
-    = render "views/post_types/_photoset"
-  %li
-    = render "views/post_types/_video"
-  %li
-    = render "views/post_types/_audio"
-  %li
-    = render "views/post_types/_text"
-  %li
-    = render "views/post_types/_quote"
-  %li
-    = render "views/post_types/_link"
-  %li
-    = render "views/post_types/_chat"
-  %li
-    = render "views/post_types/_answer"
+%li.item
+  = render "views/post_types/_photo"
+  = render "views/post_types/_photoset"
+  = render "views/post_types/_video"
+  = render "views/post_types/_audio"
+  = render "views/post_types/_text"
+  = render "views/post_types/_quote"
+  = render "views/post_types/_link"
+  = render "views/post_types/_chat"
+  = render "views/post_types/_answer"
+  {block:HasTags}
+  %ul.tags
+    {block:Tags}
+    %li
+      %a{ :href=>"{TagURL}"} {Tag}
+    {/block:Tags}
+  {/block:HasTags}
 {/block:Posts}
+!= "</ol>"
+
+%footer
+  {block:Pagination}
+  {block:PreviousPage}
+  %a{ :href=>"{PreviousPage}"} &#171; Previous
+  {/block:PreviousPage}
+
+  {block:NextPage}
+  %a{ :href=>"{NextPage}"} Next &#187;
+  {/block:NextPage}
+  {/block:Pagination}

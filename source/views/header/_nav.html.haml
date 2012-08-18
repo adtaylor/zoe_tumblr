@@ -1,5 +1,6 @@
 %nav.nav
-  %ul
+  %a.nav-control.desk-nav-hide{:href=>"#nav"} Menu
+  %ul.mob-nav-hide
     - (1...6).each do |item|
       %li
-        %a{:href=>"#hello"}= "hello #{item}"
+        %a{:href=>"#hello"}= "nav item #{item}"
