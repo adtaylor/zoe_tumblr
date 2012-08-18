@@ -35,9 +35,12 @@
   %link{ :rel=>"alternate", :type=>"application/rss+xml", :href=>"{RSS}"}
  
   / Load fonts 
-  %link{ :href=>'http://fonts.googleapis.com/css?family=Glegoo', :rel=>'stylesheet', :type=>'text/css'}
+  = javascript_include_tag "//use.typekit.net/akl5ner.js"
+  :javascript
+      try{Typekit.load();}catch(e){}
 
-  = stylesheet_link_tag "site"
+
+  = stylesheet_link_tag "application"
 
   / variable styles
   :css
