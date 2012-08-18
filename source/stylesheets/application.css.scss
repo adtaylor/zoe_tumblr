@@ -36,17 +36,11 @@ $break-small: 480px;
 $break-medium: 700px;
 $break-wide: 900px;
 
-@mixin respond-to($media) {
-  @if $media == small {
-    @media only screen and (min-width: 500px) { @content; }
-  }
-  @else if $media == medium {
-    @media only screen and (min-width: 700px) { @content; }
-  }
-  @else if $media == wide {
-    @media only screen and (min-width: 900px) { @content; }
-  }
-}
+/*
+ * Site variables
+ */
+
+$wide-sidebar: 250px;
 
 /* ==========================================================================
    HTML5 display definitions
@@ -68,6 +62,15 @@ nav,
 section,
 summary {
   display: block;
+}
+
+/*
+ * Adds border-box model to all elements
+ */
+
+* {
+  box-sizing: border-box;
+  *behavior: url('http://static.tumblr.com/d2erwgc/CEXm8yevd/boxsizing.htc');
 }
 
 /*
@@ -140,9 +143,14 @@ body {
   margin: 0;
   line-height: 1.4;
   color: $text-color;
+  font-size: 0.875em;
 
-  @media (min-width:600px) {
-    font-size: 1.125em;
+  @media (min-width:$break-medium) {
+    font-size: 1em; // 16px
+  }
+
+  @media (min-width:$break-wide) {
+    font-size: 1.125em; // 18px
   }
 }
 
@@ -384,12 +392,9 @@ ul {
   padding: 0;
 }
 
-/*
- * Corrects list images handled incorrectly in IE 7.
- */
-
 nav ul,
-nav ol {
+nav ol,
+.semantic-list {
   list-style: none;
   list-style-image: none;
 }
@@ -594,6 +599,27 @@ table {
 }
 
 /* ==========================================================================
+   Layout
+   ========================================================================== */
+
+@media (min-width: $break-small) {
+}
+
+@media (min-width: $break-wide) {
+  [role="banner"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $wide-sidebar;
+  }
+
+  #main {
+    margin-left: $wide-sidebar;
+  }
+}
+
+/* ==========================================================================
    Masthead
    ========================================================================== */
 
@@ -642,4 +668,25 @@ table {
   }
 
 }
+
+/* ==========================================================================
+   Posts list
+   ========================================================================== */
+
+.posts {
+
+  .item {
+
+  }
+}
+
+
+/* ==========================================================================
+   Post item
+   ========================================================================== */
+
+.item {
+
+}
+
 
