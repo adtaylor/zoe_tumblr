@@ -22,6 +22,12 @@ $dark-text-color: #333;
 $primary-color: #f96fca;
 $secondary-color: #EE5E31;
 
+$link-color: $secondary-color;
+$link-hover-color: darken($link-color, 20%);
+
+$cover-color: #F7F5F3;
+$bg-color: #fff;
+
 /*
  * Font defaults
  */
@@ -41,6 +47,7 @@ $break-wide: 900px;
  */
 
 $wide-sidebar: 250px;
+$post-width: 500px;
 
 /* ==========================================================================
    HTML5 display definitions
@@ -81,14 +88,14 @@ audio,
 canvas,
 video {
   display: inline-block;
-           *display: inline;
-           *zoom: 1;
-         }
+  *display: inline;
+  *zoom: 1;
+}
 
-         /*
-          * Prevents modern browsers from displaying `audio` without controls.
-          * Remove excess height in iOS 5 devices.
-          */
+/*
+* Prevents modern browsers from displaying `audio` without controls.
+* Remove excess height in iOS 5 devices.
+*/
 
 audio:not([controls]) {
   display: none;
@@ -141,16 +148,16 @@ textarea {
 
 body {
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.58;
   color: $text-color;
   font-size: 0.875em;
 
   @media (min-width:$break-medium) {
-    font-size: 1em; // 16px
+    //font-size: 1em; // 16px
   }
 
   @media (min-width:$break-wide) {
-    font-size: 1.125em; // 18px
+    //font-size: 1.125em; // 18px
   }
 }
 
@@ -164,7 +171,7 @@ body {
 
 a {
   text-decoration: none;
-  color: $light-text-color;
+  color: $link-color;
 }
 
 /*
@@ -182,6 +189,15 @@ a:focus {
 a:active,
 a:hover {
   outline: 0;
+  color: $link-hover-color;
+}
+
+/*
+ * Navigation links
+ */
+
+nav a {
+  color: $light-text-color;
 }
 
 /* ==========================================================================
@@ -244,7 +260,7 @@ h6 {
  */
 
 [role="banner"] {
-  font-size: 68.75%; // 12px
+  font-size: 0.857em; // 12px
 
   .zoewithdots {
     font-size: 1.75em;
@@ -269,7 +285,13 @@ strong {
 }
 
 blockquote {
-  margin: 1em 40px;
+  padding: 1em;
+  margin: 1em 0;
+  background-color: $cover-color;
+
+  @media (min-width: $break-small) {
+    margin: 1em 40px;
+  }
 }
 
 /*
@@ -678,6 +700,7 @@ table {
   .item {
 
   }
+
 }
 
 
@@ -686,7 +709,59 @@ table {
    ========================================================================== */
 
 .item {
+    padding: 1.5em;
 
+    @media (min-width: $break-medium) {
+      padding: 4em;
+    }
+
+    @media (min-width: $break-wide) {
+      padding: 3em 5em;
+    }
+
+    p,
+    .title,
+    .tags {
+      max-width: $post-width;
+    }
+    blockquote {
+      max-width: $post-width + 40;
+
+      p {
+        max-width: none;
+      }
+    }
 }
 
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+.tags {
+  @extend .semantic-list;
+  margin-top: 4em;
+  font-size: 0.857em;
 
+  li {
+   display: inline-block;
+   *display: inline;
+  }
+  
+  a {
+    position: relative;
+    padding: 0.5em 0.5em 0.5em 2em;
+    @include border-radius(3px);
+    background-color: $cover-color;
+
+    &:before {
+      content: '.';
+      position: absolute;
+      top: 8px;
+      left: 7px;
+      width: 10px;
+      height: 10px;
+      @include border-radius(10px);
+      background-color: $bg-color;
+      color: $bg-color;
+    }
+  }
+}
