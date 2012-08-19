@@ -1,7 +1,9 @@
 {block:Text}
 %article.post.text
   {block:Title}
-  %h1.title {Title}
+  %header
+    %h1.title {Title}
+    %p.date= "{block:Date}{DayOfMonth} {Month} {Year}{/block:Date}"
   {/block:Title}
   .body {Body}
 {/block:Text}

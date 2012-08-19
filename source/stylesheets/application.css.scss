@@ -7,44 +7,43 @@
 // @import "global/*.png";
 
 
-/* ==========================================================================
-   Site Settings
-   ========================================================================== */
+// ==========================================================================
+// Site Settings
+// ==========================================================================
 
-/*
- * Colours
- */
+//
+// Colours
+//
 
 $text-color: #5F5C52;
 $light-text-color: #777;
 $dark-text-color: #333;
 
-$primary-color: #f96fca;
-$secondary-color: #EE5E31;
+$primary-color: #EE5E31;
 
-$link-color: $secondary-color;
+$link-color: $primary-color;
 $link-hover-color: darken($link-color, 20%);
 
 $cover-color: #F7F5F3;
 $bg-color: #fff;
 
-/*
- * Font defaults
- */
+//
+// Font defaults
+//
 
 $font-family: Helvetica, Arial, sans-serif;
 
-/*
- * Media Query break points
- */
+//
+// Media Query break points
+//
 
 $break-small: 480px;
 $break-medium: 700px;
 $break-wide: 900px;
 
-/*
- * Site variables
- */
+//
+// Site variables
+//
 
 $wide-sidebar: 250px;
 $post-width: 500px;
@@ -161,6 +160,10 @@ body {
   }
 }
 
+iframe {
+  max-width: 500px !important;
+}
+
 /* ==========================================================================
    Links
    ========================================================================== */
@@ -226,8 +229,16 @@ nav a {
  */
 
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+  font-size: 1.3em;
+  margin: 0.67em 0 0;
+  line-height: 1.25;
+}
+
+@media (min-width: $break-medium) {
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0 0;
+  }
 }
 
 h2 {
@@ -263,7 +274,12 @@ h6 {
   font-size: 0.857em; // 12px
 
   .zoewithdots {
-    font-size: 1.75em;
+    font-size: 3em;
+    color: darken($cover-color,30%);
+
+    span {
+      color: $primary-color;
+    }
   }
 }
 
@@ -385,6 +401,7 @@ sub {
   bottom: -0.25em;
 }
 
+
 /* ==========================================================================
    Lists
    ========================================================================== */
@@ -455,7 +472,7 @@ figure {
   margin: 0;
 }
 
-figure img {
+.post img {
   max-width: 100%;
 }
 
@@ -650,34 +667,9 @@ table {
   text-align: center;
 
   @media (min-width: $break-wide) {
+    padding-top: 4em;
     text-align: left;
-  }
-
-  .nav-control {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.5em;
-    background-color: $secondary-color;
-    color: #fff;
-  }
-
-  .mob-nav-hide {
-    display: none;
-
-    @media (min-width: $break-small) {
-      display: block;
-    }
-  }
-
-  @media (min-width: $break-small) {
-    .nav-control {
-      display: none;
-    }
-
-    .desk-nav-hide {
-      display: none;
-    }
+    border-right: 1px dotted darken($cover-color,10%);
   }
 
   /*
@@ -686,19 +678,16 @@ table {
   .masthead {
     color: $primary-color;
   }
+}
 
-  /*
-   * Navigation
-   */
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
 
-  .nav {
+.nav {
     li {
       display: inline-block;
       *display: inline;
-    }
-
-    @media (min-width: $break-small) {
-      // big stuff
     }
 
     @media (min-width: $break-wide) {
@@ -709,13 +698,65 @@ table {
     }
   }
 
+.nav li:after {
+  content : "//";
+  margin: 0 3px;
+  opacity: 0.7; 
 }
+.nav ul + ul li:last-child:after { 
+  content: none;
+}
+
+@media (min-width: $break-wide) {
+  .nav li:after {
+    content: none;
+    margin: 0;
+  }
+}
+
+/*
+ * Shadow border
+ */
+.nav {
+  border-bottom: 1px solid darken($cover-color,10%);
+  padding-bottom: 1em;
+  position: relative;
+  background-color: white;
+
+  &:after {
+    content: ".";
+    position: absolute;
+    bottom: 5px;
+    left: 12%;
+    width: 76%;
+    height: 10px;
+    z-index: -1;
+
+    color: #fff;
+    @include box-shadow(0 3px 15px darken($cover-color,10%));
+  }
+
+  @media (min-width: $break-wide) {
+    border-style: none;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+
 
 /* ==========================================================================
    Posts list
    ========================================================================== */
 
 .posts {
+  max-width: $post-width;
+  margin: 0 auto;
+
+  @media (min-width: $break-wide) {
+    max-width: none;
+  }
 
   .item {
 
@@ -730,6 +771,7 @@ table {
 
 .item {
     padding: 1.5em;
+    border-bottom: 1px dotted darken($cover-color,10%);
 
     @media (min-width: $break-medium) {
       padding: 4em;
@@ -739,6 +781,13 @@ table {
       padding: 3em 5em;
     }
 
+    header {
+      margin-bottom: 1em;
+      
+      @media (min-width: $break-medium) {
+        margin-bottom: 2em;
+      }
+    }
     p,
     .title,
     .tags {
@@ -753,13 +802,38 @@ table {
     }
 }
 
+article {
+  position: relative;
+
+  &:before {
+    top: 3px;
+    opacity: 0.2;
+
+    @media (min-width: 700px) {
+      position: absolute;
+      top: -5px;
+      left: -1.8em;
+      font-size: 2em;
+    }
+  }
+}
+
+.date {
+  color: #AFAB9E;
+  font-size: 0.857em;
+  margin: 0;
+}
+
 /* ==========================================================================
    Tags
    ========================================================================== */
 .tags {
   @extend .semantic-list;
-  margin-top: 4em;
   font-size: 0.857em;
+
+  @media (min-width: $break-wide) {
+    margin-top: 4em;
+  }
 
   li {
    display: inline-block;
@@ -769,7 +843,7 @@ table {
   
   a {
     position: relative;
-    padding: 0.5em 0.5em 0.5em 2em;
+    padding: 0.25em 0.5em 0.25em 2em;
     display: block;
     @include border-radius(3px);
     background-color: $cover-color;
