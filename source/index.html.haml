@@ -18,16 +18,15 @@
       %a{ :href=>"{TagURL}"} {Tag}
     {/block:Tags}
   {/block:HasTags}
+  %ul.social.semantic-list
+    %li
+      %a.permalink.ss-link{:href=>"{ShortURL}"} {ShortURL}
+    %li
+      %a{ :href=>"http://www.facebook.com/sharer.php?u={URLEncodedPermalink}", :class=>"socialite facebook-like", :data=> {:href=>"{URLEncodedPermalink}", :send=>"false", :layout=>"button_count", :width=>"60", :"show-faces"=>"false"}, :rel=>"nofollow", :target=>"_blank"}  Share on Facebook
+    %li
+      %a{ :href=>"http://twitter.com/share", :class=>"socialite twitter-share", :data=> {:url=>"{URLEncodedPermalink}", :count=>"none", :via=>"zoewithdots"}, :rel=>"nofollow", :target=>"_blank"} Share on Twitter
+    
+// TODO add read more
 {/block:Posts}
 != "</ol>"
 
-%footer
-  {block:Pagination}
-  {block:PreviousPage}
-  %a{ :href=>"{PreviousPage}"} &#171; Previous
-  {/block:PreviousPage}
-
-  {block:NextPage}
-  %a{ :href=>"{NextPage}"} Next &#187;
-  {/block:NextPage}
-  {/block:Pagination}

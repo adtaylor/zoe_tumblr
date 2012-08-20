@@ -1,6 +1,5 @@
-# This ALL needs to be refactored 
+# =require 'socialite'
+
 $ ->
-  $('.nav-control').on 'click', ->
-    $(@).toggleClass 'is-selected'
-    $('.nav ul').toggleClass 'mob-nav-hide'
-    return false
+  $('.socialite').on 'hover', ->
+    Socialite.activate @, 'widget'

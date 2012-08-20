@@ -1,6 +1,19 @@
 %nav.nav
-  %a.nav-control.desk-nav-hide{:href=>"#nav"} Menu
-  %ul.mob-nav-hide
-    - (1...6).each do |item|
+  %ul.mob-nav-hide.tumblr_categories
+    / Tumblr category links
+    - t_links = {"Social Media " => "#link_url" }
+    - t_links[:fashion] = "#link_url"
+    - t_links[:music] = "#link_url"
+    - t_links[:"How to's"] = "#link_url"
+    - t_links.each do |item, link|
       %li
-        %a{:href=>"#hello"}= "nav item #{item}"
+        %a{:href=>"/tagged/#{link}"}= "#{item}"
+  %ul.mob-nav-hide.social_links
+    / Social based links
+    - p_links = {"Pinterest" => "http://pinterest.com/zoewithdots/" }
+    - p_links[:"LinkedIn"] = "http://uk.linkedin.com/in/zoewithdots"
+    - p_links[:"Twitter"] = "http://twitter.com/zoewithdots"
+    - p_links[:About] = "#about"
+    - p_links.each do |item, link|
+      %li
+        %a{:href=>link}= "#{item}"
