@@ -2,8 +2,10 @@
 %article.post.text.ss-notebook
   {block:Title}
   %header
-    %h1.title {Title}
-    %p.date= "{block:Date}{DayOfMonth} {Month} {Year}{/block:Date}"
+    %h1.title{:itemprop=>"name"} {Title}
+    {block:Date}
+    %p.date= "{DayOfMonth} {Month} {Year}"
+    {/block:Date}
   {/block:Title}
-  .body {Body}
+  .body{:itemprop=>"articleBody"} {Body}
 {/block:Text}
