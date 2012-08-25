@@ -14,18 +14,7 @@
   {/block:Description}
 
   / -- variable meta data
-  %meta{ :name=>"text:Flickr Username", :content=>""}
-  %meta{ :name=>"color:Background", :content=>"#fff" }
-  %meta{ :name=>"font:Title", :content=>"Arial" }
-  %meta{ :name=>"font:Body", :content=>"Courier" }
-  %meta{ :name=>"font:Accent", :content=>"Lucida Sans" }
-  %meta{ :name=>"if:Show People I Follow", :content=>"1" }
-  %meta{ :name=>"if:Show Tags", :content=>"1" }
-  %meta{ :name=>"if:Show Album Art on Audio Posts", :content=>"1" }
-  %meta{ :name=>"if:Enable Jump Pagination", :content=>"0" }
   %meta{ :name=>"text:Disqus Shortname", :content=>"" }
-  %meta{ :name=>"image:Header", :content=>"" }
-  %meta{ :name=>"image:Background", :content=>"" }
 
   %title {Title}
   
@@ -45,8 +34,6 @@
 
   :css
     {CustomCSS}
-
-  %script{ :src=>"http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js" }
 
 %body
 
@@ -73,7 +60,6 @@
 
 
   / load scripts last
-  %script{ :src=>"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
   = javascript_include_tag  "scripts"
 
   :javascript
