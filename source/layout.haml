@@ -13,10 +13,10 @@
   %meta{ :name=>"description", :content=>"{MetaDescription}"}
   {/block:Description}
 
-  / -- variable meta data
+  / -- variable %meta{ data
   %meta{ :name=>"text:Disqus Shortname", :content=>"" }
 
-  %title {Title}
+  %title Zoe with dots{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}
   
   / Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references
   %link{ :rel=>"shortcut icon", :href=>"{Favicon}"}
@@ -26,10 +26,9 @@
   / Load fonts 
   = javascript_include_tag "//use.typekit.net/akl5ner.js"
   :javascript
-      try{Typekit.load();}catch(e){}
+    try{Typekit.load();}catch(e){}
 
-
-  = stylesheet_link_tag "application"
+  = stylesheet_link_tag "http://static.tumblr.com/3srsix8/Gt7m9j80a/application.css"
   = stylesheet_link_tag "http://static.tumblr.com/d2erwgc/550m8zvbq/ss-standard.css"
 
   :css
@@ -60,10 +59,10 @@
 
 
   / load scripts last
-  = javascript_include_tag  "scripts"
+  = javascript_include_tag  "http://static.tumblr.com/3srsix8/H2Lm9hb3n/scripts.js"
 
   :javascript
-    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+    var _gaq = [['_setAccount', 'UA-12360919-2'], ['_trackPageview']];
     (function(d, t) {
     var g = d.createElement(t),
         s = d.getElementsByTagName(t)[0];

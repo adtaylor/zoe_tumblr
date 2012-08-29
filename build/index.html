@@ -6,81 +6,86 @@
 <head>
   <meta charset='utf-8' />
   <meta content='IE=edge,chrome=1' http_equiv='X-UA-Compatible' />
-  <meta content='Ad Taylor (adtaylor.co.uk)' name='author' />
+  <meta content='Zoe Ann Baker' name='author' />
   <meta content='width=device-width, initial-scale=1.0' name='viewport' />
   {block:Description}
   <meta content='{MetaDescription}' name='description' />
   {/block:Description}
-  <!-- -- variable meta data -->
-  <meta content='' name='text:Flickr Username' />
-  <meta content='#fff' name='color:Background' />
-  <meta content='Arial' name='font:Title' />
-  <meta content='Courier' name='font:Body' />
-  <meta content='Lucida Sans' name='font:Accent' />
-  <meta content='1' name='if:Show People I Follow' />
-  <meta content='1' name='if:Show Tags' />
-  <meta content='1' name='if:Show Album Art on Audio Posts' />
-  <meta content='0' name='if:Enable Jump Pagination' />
+  <!-- -- variable %meta{ data -->
   <meta content='' name='text:Disqus Shortname' />
-  <meta content='' name='image:Header' />
-  <meta content='' name='image:Background' />
-  <title>{Title}{block:SearchPage}, {lang:Search results for SearchQuery}{/block:SearchPage}{block:PostSummary}, {PostSummary}{/block:PostSummary}</title>
+  <title>Zoe with dots{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}</title>
   <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
   <link href='{Favicon}' rel='shortcut icon' />
   <link href='{PortraitURL-128}' rel='apple-touch-icon' />
   <link href='{RSS}' rel='alternate' type='application/rss+xml' />
   <!-- Load fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Glegoo' rel='stylesheet' type='text/css' />
-  <link href="/stylesheets/site.css?1337506504" media="screen" rel="stylesheet" type="text/css" />
-  <!-- variable styles -->
-  <style type='text/css'>
-    /*<![CDATA[*/
-        body {
-            /*background: {color:Background} url('{image:Background}');*/
-            /*font-family: {font:Body};*/
-        }
-    /*]]>*/
-  </style>
+  <script src="//use.typekit.net/akl5ner.js" type="text/javascript"></script>
+  <script type='text/javascript'>
+    //<![CDATA[
+try{Typekit.load()}catch(e){};
+//]]>
+  </script>
+  <link href="http://static.tumblr.com/3srsix8/Gt7m9j80a/application.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="http://static.tumblr.com/d2erwgc/550m8zvbq/ss-standard.css" media="screen" rel="stylesheet" type="text/css" />
   <style type='text/css'>
     /*<![CDATA[*/
       {CustomCSS}
     /*]]>*/
   </style>
-  <script src='http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.0.6-development-only.js'></script>
 </head>
 <body>
   <!-- Header -->
   <header role='banner'>
     <hgroup class='masthead'>
-      <h1>Zoe with dots</h1>
+      <a class='zoewithdots' href='/'>
+        Zoe with
+        <span>dots</span>
+      </a>
     </hgroup>
     <nav class='nav'>
-      <ul class='mob-nav-hide'>
+      <ul class='mob-nav-hide tumblr_categories'>
+        <!-- Tumblr category links -->
         <li>
-          <a href='#hello'>nav item 1</a>
+          <a href='/tagged/social'>social</a>
         </li>
         <li>
-          <a href='#hello'>nav item 2</a>
+          <a href='/tagged/photography'>photography</a>
         </li>
         <li>
-          <a href='#hello'>nav item 3</a>
+          <a href='/tagged/music'>music</a>
         </li>
         <li>
-          <a href='#hello'>nav item 4</a>
+          <a href='/tagged/love_and_stuff'>Love and stuff</a>
+        </li>
+      </ul>
+      <ul class='mob-nav-hide social_links'>
+        <!-- Social based links -->
+        <li>
+          <a href='http://pinterest.com/zoewithdots/'>Pinterest</a>
         </li>
         <li>
-          <a href='#hello'>nav item 5</a>
+          <a href='http://uk.linkedin.com/in/zoewithdots'>LinkedIn</a>
+        </li>
+        <li>
+          <a href='http://twitter.com/zoewithdots'>Twitter</a>
+        </li>
+        <li>
+          <a href='/about'>About</a>
         </li>
       </ul>
     </nav>
   </header>
   <section id='main'>
     <!-- the meat and potatoes -->
-<ol class="semantic-list post {block:IndexPage} posts{/block:IndexPage}">
+<ol class="semantic-list {block:IndexPage} posts{/block:IndexPage}">
 {block:Posts}
-<li class='item'>
+<li class='item' itemType='http://schema.org/BlogPosting' itemscope='itemscope'>
+  {block:Date}
+  <meta content='{Year}-{MonthNumberWithZero}-{DayOfMonth}T{24Hour}:{Minutes}Z' itemprop='datePublished' />
+  {/block:Date}
+  <meta content='en-GB' itemprop='inLanguage' />
   {block:Photo}
-  <article class='post photo region'>
+  <article class='post photo region ss-camera'>
     <figure>
       {LinkOpenTag}
       <a href='{Permalink}'>
@@ -89,20 +94,20 @@
       {LinkCloseTag}
     </figure>
     {block:Caption}
-    <div class='caption'>{Caption}</div>
+    <div class='caption' itemprop='description'>{Caption}</div>
     {/block:Caption}
   </article>
   {/block:Photo}
   {block:Photoset}
-  <article class='post photoset'>
+  <article class='post photoset ss-picture'>
     {Photoset-500}
     {block:Caption}
-    <div class='caption'>{Caption}</div>
+    <div class='caption' itemprop='description'>{Caption}</div>
     {/block:Caption}
   </article>
   {/block:Photoset}
   {block:Video}
-  <article class='post video'>
+  <article class='post video ss-video'>
     {Video-500}
     {block:Caption}
     <div class='caption'>{Caption}</div>
@@ -110,7 +115,7 @@
   </article>
   {/block:Video}
   {block:Audio}
-  <article class='post audio'>
+  <article class='post audio ss-music'>
     {block:IfShowAlbumArtOnAudioPosts}
     {block:AlbumArt}
     <div class='album_art'>
@@ -136,23 +141,28 @@
   </article>
   {/block:Audio}
   {block:Text}
-  <article class='post text'>
+  <article class='post text ss-notebook'>
     {block:Title}
-    <div class='title'>{Title}</div>
+    <header>
+      <h1 class='title' itemprop='name'>{Title}</h1>
+      {block:Date}
+      <p class='date'>{DayOfMonth} {Month} {Year}</p>
+      {/block:Date}
+    </header>
     {/block:Title}
-    <div class='body'>{Body}</div>
+    <div class='body' itemprop='articleBody'>{Body}</div>
   </article>
   {/block:Text}
   {block:Quote}
-  <article class='post quote {Length}'>
-    <blockquote>{Quote}</blockquote>
+  <article class='post quote {Length} ss-quote '>
     {block:Source}
-    <div class='source'>{Source}</div>
+    <p class='source'>{Source}</p>
     {/block:Source}
+    <blockquote>{Quote}</blockquote>
   </article>
   {/block:Quote}
   {block:Link}
-  <article class='post link'>
+  <article class='post link ss-link'>
     <a href='{URL}'>{Name} &raquo;</a>
     {block:Description}
     <div class='description'>{Description}</div>
@@ -160,7 +170,7 @@
   </article>
   {/block:Link}
   {block:Chat}
-  <article class='post chat'>
+  <article class='post chat ss-chat'>
     {block:Title}
     <div class='title'>{Title}</div>
     {/block:Title}
@@ -187,7 +197,7 @@
   </article>
   {/block:Answer}
   {block:HasTags}
-  <ul class='tags'>
+  <ul class='tags' itemprop='keywords'>
     {block:Tags}
     <li>
       <a href='{TagURL}'>{Tag}</a>
@@ -195,56 +205,38 @@
     {/block:Tags}
   </ul>
   {/block:HasTags}
+  <ul class='social semantic-list'>
+    <li>
+      <a class='permalink ss-link' href='{ShortURL}'>&nbsp; {ShortURL}</a>
+    </li>
+    <li>
+      <a class='socialite facebook-like' data-href='{URLEncodedPermalink}' data-layout='button_count' data-send='false' data-show-faces='false' data-width='60' href='http://www.facebook.com/sharer.php?u={URLEncodedPermalink}' rel='nofollow' target='_blank'>Share on Facebook</a>
+    </li>
+    <li>
+      <a class='socialite twitter-share' data-count='none' data-url='{URLEncodedPermalink}' data-via='zoewithdots' href='http://twitter.com/share' rel='nofollow' target='_blank'>Share on Twitter</a>
+    </li>
+  </ul>
 </li>
+<!-- / TODO add read more -->
 {/block:Posts}
 </ol>
-<footer>
-  {block:Pagination}
-  {block:PreviousPage}
-  <a href='{PreviousPage}'>&#171; Previous</a>
-  {/block:PreviousPage}
-  {block:NextPage}
-  <a href='{NextPage}'>Next &#187;</a>
-  {/block:NextPage}
-  {/block:Pagination}
-</footer>
-    <footer>
-      &copy; {CopyrightYears} Zoë Ann Baker.
-      <!-- Search forms -->
-      <section id='search'>
-        <form action='/search' id='search-form' method='get' role='search'>
-          <input name='t' type='hidden' value='{Name}' />
-          <input name='scope' type='hidden' value='all_of_tumblr' />
-          <input class='query' name='q' type='text' value='{SearchQuery}' />
-          <input class='submit' type='submit' value='Search' />
-        </form>
-        <div id='search-scope'>
-          <input checked='checked' id='search-scope-me' name='scope' type='radio' />
-          <label for='search-scope-me'>{lang:My blog}</label>
-          <input id='search-scope-all' name='scope' type='radio' />
-          <label for='search-scope-all'>{lang:All of Tumblr}</label>
-        </div>
-      </section>
-      <!-- search results -->
-      {block:SearchPage}
-      <section id='search-results'>
-        {block:SearchResults}
-        {lang:SearchResultCount results for SearchQuery 2}
-        {/block:SearchResults}
-        {block:NoSearchResults}
-        {lang:No search results for SearchQuery 2}
-        {/block:NoSearchResults}
-      </section>
-      {/block:SearchPage}
+    <footer id='footer'>
+      <div class='copy'>&copy; {CopyrightYears} Zoë Ann Baker.</div>
+      {block:Pagination}
+      {block:PreviousPage}
+      <a class='prev' href='{PreviousPage}'>&#171; Previous</a>
+      {/block:PreviousPage}
+      {block:NextPage}
+      <a class='next' href='{NextPage}'>Next &#187;</a>
+      {/block:NextPage}
+      {/block:Pagination}
     </footer>
   </section>
   <!-- load scripts last -->
-  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-  <script src="/javascripts/lib/jquery.masonry.min.js" type="text/javascript"></script>
-  <script src="/javascripts/scripts.js?1337506504" type="text/javascript"></script>
+  <script src="http://static.tumblr.com/3srsix8/H2Lm9hb3n/scripts.js" type="text/javascript"></script>
   <script type='text/javascript'>
     //<![CDATA[
-var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];(function(a,b){var c=a.createElement(b),d=a.getElementsByTagName(b)[0];c.async=!0,c.src=("https:"==location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js",d.parentNode.insertBefore(c,d)})(document,"script");
+var _gaq=[["_setAccount","UA-12360919-2"],["_trackPageview"]];(function(e,t){var n=e.createElement(t),r=e.getElementsByTagName(t)[0];n.async=!0,n.src=("https:"==location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js",r.parentNode.insertBefore(n,r)})(document,"script");
 //]]>
   </script>
 </body>

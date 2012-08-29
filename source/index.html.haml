@@ -1,5 +1,5 @@
 / the meat and potatoes
-!= "<ol class=\"semantic-list post {block:IndexPage} posts{/block:IndexPage}\">"
+!= "<ol class=\"semantic-list {block:IndexPage} posts{/block:IndexPage}\">"
 {block:Posts}
 %li.item{:itemscope=>true, :itemType=>"http://schema.org/BlogPosting"}
   {block:Date}
@@ -24,7 +24,7 @@
   {/block:HasTags}
   %ul.social.semantic-list
     %li
-      %a.permalink.ss-link{:href=>"{ShortURL}"} {ShortURL}
+      %a.permalink.ss-link{:href=>"{ShortURL}"} &nbsp; {ShortURL}
     %li
       %a{ :href=>"http://www.facebook.com/sharer.php?u={URLEncodedPermalink}", :class=>"socialite facebook-like", :data=> {:href=>"{URLEncodedPermalink}", :send=>"false", :layout=>"button_count", :width=>"60", :"show-faces"=>"false"}, :rel=>"nofollow", :target=>"_blank"}  Share on Facebook
     %li

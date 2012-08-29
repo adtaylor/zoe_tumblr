@@ -1,10 +1,10 @@
 %nav.nav
   %ul.mob-nav-hide.tumblr_categories
     / Tumblr category links
-    - t_links = {"Social Media " => "#link_url" }
-    - t_links[:fashion] = "#link_url"
-    - t_links[:music] = "#link_url"
-    - t_links[:"How to's"] = "#link_url"
+    - t_links = {:social => "social" }
+    - t_links[:photography] = "photography"
+    - t_links[:music] = "music"
+    - t_links[:"love and stuff"] = "love_and_stuff"
     - t_links.each do |item, link|
       %li
         %a{:href=>"/tagged/#{link}"}= "#{item}"
@@ -13,7 +13,7 @@
     - p_links = {"Pinterest" => "http://pinterest.com/zoewithdots/" }
     - p_links[:"LinkedIn"] = "http://uk.linkedin.com/in/zoewithdots"
     - p_links[:"Twitter"] = "http://twitter.com/zoewithdots"
-    - p_links[:About] = "#about"
+    - p_links[:About] = "/about"
     - p_links.each do |item, link|
       %li
         %a{:href=>link}= "#{item}"
